@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:book_app/models/book_detail_response.dart';
 import 'package:book_app/models/book_list_response.dart';
-import 'package:book_app/views/detail_book_page.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -13,7 +12,9 @@ class BookController extends ChangeNotifier {
     var response = await http.get(
       url,
     );
+    // ignore: avoid_print
     print('Response status: ${response.statusCode}');
+    // ignore: avoid_print
     print('Response body: ${response.body}');
 
 // print(await http.read(Uri.parse('https://example.com/foobar.txt')));
@@ -29,7 +30,9 @@ class BookController extends ChangeNotifier {
     // print(widget.isbn);
     var url = Uri.parse('https://api.itbook.store/1.0/books/$isbn');
     var response = await http.get(url);
+    // ignore: avoid_print
     print('Response status: ${response.statusCode}');
+    // ignore: avoid_print
     print('Response body: ${response.body}');
 
     if (response.statusCode == 200) {
@@ -45,9 +48,11 @@ class BookController extends ChangeNotifier {
   BookListResponse? similiarBooks;
   fetchSimiliaBookApi(String title) async {
     // print(widget.isbn);
-    var url = Uri.parse('https://api.itbook.store/1.0/search/${title}');
+    var url = Uri.parse('https://api.itbook.store/1.0/search/$title');
     var response = await http.get(url);
+    // ignore: avoid_print
     print('Response status: ${response.statusCode}');
+    // ignore: avoid_print
     print('Response body: ${response.body}');
 
     if (response.statusCode == 200) {
